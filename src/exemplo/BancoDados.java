@@ -1,8 +1,7 @@
 package exemplo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Scanner;
 
 public class BancoDados {
 
@@ -13,12 +12,31 @@ public class BancoDados {
         final String BANCO = URL + "db_teste";
         final String USUARIO = "root";
         final String SENHA = "SENAC";
-                
+        
+        Scanner sc = new Scanner(System.in);      
+        
         try {
             Class.forName(DRIVER);
             Connection conexao = DriverManager.getConnection(BANCO,USUARIO,SENHA);
-            conexao.close();
-            System.out.printf("Conexao feita com sucesso!");
+            //System.out.printf("Conexao feita com sucesso!");
+            
+            Usuario usuario = new Usuario();
+        
+            System.out.print("Nome: ");
+            usuario.setNome(sc.next());
+        
+            System.out.print("Idade: ");
+            usuario.setIdade(sc.nextInt());
+        
+            String sql = "INSERT INTO tb_teste(tst_nome, tst_idade) VALUE (?, ?)";
+        
+            PreparedStatement statement = conexao.prepareStatement(sql);
+        
+            statement.setString(1, usuario.getNome());
+            statement.setInt(2, usuario.getIdade());
+                    
+            statement.execute();
+            
         } catch(ClassNotFoundException erro){
             System.out.println(erro.toString());
         } catch (SQLException erro){
@@ -27,6 +45,11 @@ public class BancoDados {
         
         
         
+        
+        
+        
+        
+       
     }
     
 }
