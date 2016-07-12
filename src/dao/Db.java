@@ -1,10 +1,10 @@
-package exemplo;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DB {
+public class Db {
 
     public Connection conexao = null;
     private final String DRIVER = "com.mysql.jdbc.Driver";
@@ -16,7 +16,7 @@ public class DB {
     public boolean getConexao(){
         try {
             Class.forName(DRIVER);
-            Connection conexao = DriverManager.getConnection(BANCO,USUARIO,SENHA);
+            conexao = DriverManager.getConnection(BANCO,USUARIO,SENHA);
             System.out.println("Conectou!");
             return true;
         } catch (ClassNotFoundException erro){

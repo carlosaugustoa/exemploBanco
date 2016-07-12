@@ -1,4 +1,4 @@
-package exemplo;
+package model;
 
 public class Usuario {
 
