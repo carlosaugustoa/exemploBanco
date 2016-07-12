@@ -1,16 +1,15 @@
 package gui;
 
-
 import dao.UsuarioDao;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import model.Usuario;
 
 public class Principal {
 
     public static void main(String[] args) {
   
-        UsuarioDao dao = new UsuarioDao();
-        Usuario usuario = new Usuario();
+//        UsuarioDao dao = new UsuarioDao();
+//        Usuario usuario = new Usuario();
 
 ////incluir      
 //        usuario.setNome(
@@ -24,12 +23,12 @@ public class Principal {
 //        );
 //       
 //       dao.insert(usuario);
-    
+//    
         
-//excluir
+////excluir
 //        usuario.setId(
 //            Integer.parseInt(
-//                JOptionPane.showInputDialog("Idade do Usuario")
+//                JOptionPane.showInputDialog("Id. do Usuario")
 //            )
 //        );
 //        
@@ -40,19 +39,27 @@ public class Principal {
 //        }
 //      
         
-//listar
-        String texto = "";
+////listar
+//        String texto = "";
+//        
+//        for (Usuario u : dao.listarTudo()){
+//            texto += u.getId() + " " + u.getNome() + " " + u.getIdade() + "\n";
+//        }
+//        
+//        JOptionPane.showMessageDialog(null,texto);
         
-        for (Usuario u : dao.listarTudo()){
-            texto += u.getId() + " " + u.getNome() + " " + u.getIdade() + "\n";
-        }
-        
-        JOptionPane.showMessageDialog(null,texto);
+////listar por id
+//        usuario = dao.listarPorId(5);
+//            System.out.println(usuario);
         
         
-        
-        
-        
+//listar por nome
+        UsuarioDao dao = new UsuarioDao();
+       
+        for (Usuario usuario : dao.listarPorLike("ricardo")) {
+            System.out.println(usuario.toString());
+        } 
+         
         
         
     }
